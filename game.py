@@ -4,10 +4,17 @@ class Game():
         self.board = (' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ')
         self.board_history = [self.board]
         self.player = 'x'
+        self.winner = ' '
 
     @property
     def game_finished(self):
-        return (self.has_winnier(self.board, 'x') or self.has_winnier(self.board, 'o') or self.board.count(' ') == 0)
+        x_winner = self.has_winnier(self.board, 'x')
+        o_winner = self.has_winnier(self.board, 'o')
+        if x_winner:
+            self.winner = 'x'
+        if o_winner:
+            self.winner = 'o'
+        return (x_winner or o_winner or self.board.count(' ') == 0)
     
     @property
     def valid_positions(self):
@@ -28,6 +35,7 @@ class Game():
         self.board = (' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ')
         self.board_history = [self.board]
         self.player = 'x'
+        self.winner = ' '
 
     def display(self):
         print('| ' + self.board[0] + ' | ' + self.board[1] + ' | ' + self.board[2] + ' |' + '\n' +
@@ -51,8 +59,3 @@ class Game():
 if __name__ == '__main__':
     board = Game()
     print(board.game_finished)
-
-
-    for i in range(1, 8):
-        print(i)
-    pass
