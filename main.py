@@ -11,6 +11,7 @@ def train(game, agent, oponent, iterations=1000000):
                 oponent.act(game)
             
         agent.learn(game.board_history)
+        oponent.learn(game.board_history)
     
     for b, v in agent.value_function.items():
         print(b, v)
@@ -25,7 +26,7 @@ def evaluate(game, agent, oponent, n_games):
             game.display()
             if not game.game_finished:
                 oponent.act(game)
-            game.display()
+                game.display()
         if game.winner == 'x':
             print("Agent won!")
             wins += 1
@@ -72,6 +73,7 @@ if __name__ == '__main__':
     game = Game()
     agent = SmartAgent()
     oponent = RandomAgent()
+    # oponent = SmartAgent()
 
     train(game, agent, oponent, 500000)
     evaluate(game, agent, oponent, 50)

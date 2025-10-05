@@ -13,6 +13,7 @@ class AgentTemplate():
 
 from itertools import product
 from random import uniform, choice
+from utils import get_canonical_board
 
 class SmartAgent(AgentTemplate):
     def __init__(self, alpha=0.1, epsilon=1, epsilon_decay=0.999999):
@@ -25,6 +26,7 @@ class SmartAgent(AgentTemplate):
 
     def generate_value_function(self):
         all_boards = product(' xo', repeat=9)
+        seen = set()
 
         for board in all_boards:
             x_num = board.count('x')
@@ -44,6 +46,15 @@ class SmartAgent(AgentTemplate):
 
             if o_winner and (x_num != o_num):
                 continue
+
+            #TODO: Get rotations and reflections of board
+            #TODO: Store min of all
+
+            board, _ = get_canonical_board(board)
+
+            if board in seen:
+                continue
+            seen.add(board)
 
             if x_winner:
                 self.value_function[board] = 1
@@ -65,20 +76,28 @@ class SmartAgent(AgentTemplate):
         
         best_value = 0
         best_action = actions[0]
+        key = (0,1,2,3,4,5,6,7,8)
+
+        #TODO: get rotations and reflections of board
+        #TODO: find min
+        #TODO: find best action
+        #TODO: convert back to real board
 
         for action in actions:
             potential_board = game.look_ahead(action)
-            if self.value_function[potential_board] > best_value:
-                best_value = self.value_function[potential_board]
+            canonical, indx = get_canonical_board(potential_board)
+            if self.value_function[canonical] > best_value:
+                best_value = self.value_function[canonical]
                 best_action = action
+                key = indx
         
         game.place_piece(best_action)
 
     def learn(self, board_history):
         for i in range(1, len(board_history)):
-            current = board_history[i]
-            next = board_history[i-1]
-            self.value_function[current] += self.alpha * (self.value_function[next] - self.value_function[current])
+            current, _ = get_canonical_board(board_history[i])
+            nxt, _ = get_canonical_board(board_history[i-1])
+            self.value_function[current] += self.alpha * (self.value_function[nxt] - self.value_function[current])
 
 class RandomAgent(AgentTemplate):
 
