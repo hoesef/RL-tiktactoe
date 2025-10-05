@@ -179,10 +179,6 @@ def play(value_function, games=1):
     print(f"Agent drew: {draws} / {games} games")
 
 if __name__ == '__main__':
-    # value_function = train(500000)
-    # evaluate(50, value_function)
-    # play(value_function, 5)
-
-    a = 'x o x    '
-    b = 'xxo o    '
-    print(min(a, b))
+    value_function = train(500000)
+    evaluate(50, value_function)
+    play(value_function, 5)
