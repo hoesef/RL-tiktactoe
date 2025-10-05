@@ -16,7 +16,8 @@ from random import uniform, choice
 from utils import get_canonical_board
 
 class SmartAgent(AgentTemplate):
-    def __init__(self, alpha=0.1, epsilon=1, epsilon_decay=0.999999):
+    def __init__(self, piece, alpha=0.1, epsilon=1, epsilon_decay=0.999999):
+        self.piece = piece
         self.alpha = alpha
         self.epsilon = epsilon
         self.epsilon_decay = epsilon_decay
@@ -49,8 +50,10 @@ class SmartAgent(AgentTemplate):
             board = get_canonical_board(board)
 
             if x_winner:
-                self.value_function[board] = 1
-            elif o_winner or (x_num + o_num == 9):
+                self.value_function[board] = 1 * (self.piece == 'x')
+            elif o_winner:
+                self.value_function[board] = 1 * (self.piece == 'o')
+            elif x_num + o_num == 9:
                 self.value_function[board] = 0
             else:
                 self.value_function[board] = 0.5

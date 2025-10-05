@@ -2,8 +2,9 @@ from game import Game
 from agents import *
 
 def train(game, agent, oponent, iterations=1000000):
-
+    print("---------- TRAINING ----------")
     for i in range(iterations):
+        print(f"Game: {i}/{iterations}")
         game.reset()
         while not game.game_finished:
             agent.act(game)
@@ -13,11 +14,8 @@ def train(game, agent, oponent, iterations=1000000):
         agent.learn(game.board_history)
         oponent.learn(game.board_history)
     
-    for b, v in agent.value_function.items():
-        print(b, v)
-    print(agent.epsilon)
-
 def evaluate(game, agent, oponent, n_games):
+    print("---------- EVALUATING ----------")
     wins, losses, draws = 0, 0, 0
     for i in range(n_games):
         game.reset()
@@ -71,11 +69,12 @@ def play(game, agent, n_games=1):
 
 if __name__ == '__main__':
     game = Game()
-    agent = SmartAgent()
+    agent = SmartAgent(piece='x', alpha=0.01)
+    # oponent = SmartAgent(piece='o', alpha=0.05, epsilon_decay=99999)
     oponent = RandomAgent()
-    # oponent = SmartAgent()
 
-    train(game, agent, oponent, 500000)
+    train(game, agent, oponent, 50000)
+
     evaluate(game, agent, oponent, 50)
 
     play(game, agent, 3)
