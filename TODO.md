@@ -6,3 +6,5 @@
     [ ] Select agent (random vs)
     [ ] Train agent
     [ ] Agent vs Agent or Agent vs user
+[ ] Tidy up code
+    [ ] comments and docs
