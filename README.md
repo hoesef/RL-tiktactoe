@@ -2,7 +2,7 @@
 A simple reinforcement learning agent that learns to play tiktactoe.
 
 ## Overview
-This is a very simple tabular reinforcement learning agent that learns to play tiktactoe. First all possible board states are created including invalid states, such as those with multiple winners, moves after a win, too many of one piece, etc. This is then filtered down to the set of all valid boards, and then further filtered down to the set of all unique board states.
+This is a very simple tabular, $\epsilon$-greedy reinforcement learning agent that learns to play tiktactoe. First all possible board states are created including invalid states, such as those with multiple winners, moves after a win, too many of one piece, etc. This is then filtered down to the set of all valid boards, and then further filtered down to the set of all unique board states.
 
 Next these unique board states are assessed for their type ('x' win positions, 'o' win positions, draws, all other boards), the boards are then added as a key to a dictionary "value_function", with the value being either 1, 0, or 0.5. These serve as the agents initial assessment of each board state, and their values are learnt during training to reflect the actual benefit of a state for a given opponent.
 
