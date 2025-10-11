@@ -22,4 +22,4 @@ I have not spend very long tuning the hyperparameters, there are almost certainl
 ### Code optimisations
 This was just a quick project, I didn't really plan out anything and so nothing has been optimised. A different learning agent may be better suited to this task, a different class structure may be more logical or conform to better code standards (not really an optimisation but oh well).
 
-The only optimization I did add was to reduce the "legal board states" down to purley the "unique board states". The reduced the state space down from 5,478 -> 765 boards.
+The only optimization I did add was to reduce the "legal board states" down to purley the "unique board states". This reduced the state space down from 5,478 -> 765 boards.
