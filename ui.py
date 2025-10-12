@@ -25,11 +25,11 @@ class Button():
                 self.textSettings = kwargs["textSettings"]
             except KeyError:
                 raise ValueError("No text settings supplied to the button.")
-            textSettings["boarder"] = self.boarder
-            textSettings["bgc"] = self.currentColour
-            if textSettings["wrap"]:
-                textSettings["textBox"] = (width, height)
-            self.text = Text(text, **textSettings)
+            self.textSettings["boarder"] = self.boarder
+            self.textSettings["bgc"] = self.currentColour
+            if self.textSettings["wrap"]:
+                self.textSettings["textBox"] = (width, height)
+            self.text = Text(text, **self.textSettings)
 
         self.buttonSurf = pg.Surface((self.width, self.height))
         self.doDisplayUpdate = True
@@ -60,8 +60,7 @@ class Button():
 
         return (self.x, self.y, self.width, self.height)  
 
-
-if __name__ == '__main__':
+def main():
     pg.init()
     WIN = pg.display.set_mode((800, 600))
     WIN.fill((100, 100, 100))
@@ -100,4 +99,6 @@ if __name__ == '__main__':
     
     pg.font.quit()
     pg.quit()
-        
+
+if __name__ == '__main__':
+    main()
