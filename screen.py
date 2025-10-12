@@ -45,8 +45,17 @@ class MenuScreen(BaseScreen):
         super().__init__(appContext, switch_callback)
         self.appContext.set_title("Menu")
 
-        self.buttons = {"play": Button(50, 50, 50, 50, (255,0,0), boarder=2),
-                        "train": Button(110, 50, 50, 50, (200, 200, 200), boarder=2)}
+        textSettings = {"fontName": "Arial", "fontSize": 30, "pos": (0, 0), 
+                    "wrap": True, "textBox": (None, None), "padding": (5, 0, 5, 0),
+                    "boarder": (0, 0, 0), "center": (True, True), "bgc": (255, 255, 255),
+                    "bold": False, "italic": False, "textColour": (0, 0, 0), "minSize": 1}
+    
+        buttonSettings = {"colour": (255, 0, 0), "hoverColour": (0, 255, 0), 
+                        "bgc": (150, 150, 150), "boarder": (2, 2, 2, 2), 
+                        "textSettings": textSettings}
+
+        self.buttons = {"play": Button(50, 50, 100, 50, text="Play", **buttonSettings),
+                        "train": Button(160, 50, 100, 50, text="Train", **buttonSettings)}
         
         self.click = False
     
