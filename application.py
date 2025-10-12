@@ -16,6 +16,9 @@ class AppContext():
         self.CLOCK = pg.time.Clock()
         self.fps = 60
 
+        ## Mouse
+        self.pos = pg.mouse.get_pos()
+
         ## Update
         self.updateArea = []
         self.doDisplayUpdate = True
@@ -30,7 +33,7 @@ class AppContext():
 
     ## Update window
     def update_display(self):
-        if not self.doDisplayUpdate:
+        if not (self.doDisplayUpdate or self.updateArea):
             return
 
         if self.updateArea:
@@ -51,10 +54,10 @@ class AppContext():
 def main():
     app = AppContext()
     screenManager = ScreenManager(app)
-    print(app.running)
     while app.running:
         screenManager.event_loop()
         screenManager.update_loop()
+        screenManager.draw()
         app.update_display()
         app.tick()
 
