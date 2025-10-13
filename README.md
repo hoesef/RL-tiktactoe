@@ -1,8 +1,8 @@
-# RL-tiktactoe
-A simple reinforcement learning agent that learns to play tiktactoe.
+# RL-tictactoe
+A simple reinforcement learning agent that learns to play tictactoe.
 
 ## Overview
-This is a very simple tabular, $\epsilon$-greedy reinforcement learning agent that learns to play tiktactoe. First all possible board states are created including invalid states, such as those with multiple winners, moves after a win, too many of one piece, etc. This is then filtered down to the set of all valid boards, and then further filtered down to the set of all unique board states.
+This is a very simple tabular, $\epsilon$-greedy reinforcement learning agent that learns to play tictactoe. First all possible board states are created including invalid states, such as those with multiple winners, moves after a win, too many of one piece, etc. This is then filtered down to the set of all valid boards, and then further filtered down to the set of all unique board states.
 
 Next these unique board states are assessed for their type ('x' win positions, 'o' win positions, draws, all other boards), the boards are then added as a key to a dictionary "value_function", with the value being either 1, 0, or 0.5. These serve as the agents initial assessment of each board state, and their values are learnt during training to reflect the actual benefit of a state for a given opponent.
 
@@ -27,7 +27,7 @@ The only optimization I did add was to reduce the "legal board states" down to p
 # CLI Set-up
 1. Clone this repo:
 ```bash
-git clone https://github.com/hoesef/RL-tiktactoe.git [destination]
+git clone https://github.com/hoesef/RL-tictactoe.git [destination]
 ```
 
 2. Run main.py:
@@ -38,7 +38,8 @@ python .\main.py
 # GUI Set-up
 1. Clone this repo:
 ```bash
-git clone https://github.com/hoesef/RL-tiktactoe.git [destination]
+git clone https://github.com/hoesef/RL-tictactoe.git [destination]
+cd RL-tictactoe
 ```
 
 2. Clone ui elements repo:
