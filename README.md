@@ -27,7 +27,7 @@ The only optimization I did add was to reduce the "legal board states" down to p
 # CLI Set-up
 1. Clone this repo:
 ```bash
-git clone [https://github.com/hoesef/RL-tiktactoe.git] [destination]
+git clone https://github.com/hoesef/RL-tiktactoe.git [destination]
 ```
 
 2. Run main.py:
@@ -38,12 +38,12 @@ python .\main.py
 # GUI Set-up
 1. Clone this repo:
 ```bash
-git clone [https://github.com/hoesef/RL-tiktactoe.git] [destination]
+git clone https://github.com/hoesef/RL-tiktactoe.git [destination]
 ```
 
 2. Clone ui elements repo:
 ```bash
-git clone [https://github.com/hoesef/pygame-ui.git] [destination]
+git clone https://github.com/hoesef/pygame-ui.git [destination]
 ```
 
 3. Create a virtual environment
