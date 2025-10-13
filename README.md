@@ -23,3 +23,46 @@ I have not spend very long tuning the hyperparameters, there are almost certainl
 This was just a quick project, I didn't really plan out anything and so nothing has been optimised. A different learning agent may be better suited to this task, a different class structure may be more logical or conform to better code standards (not really an optimisation but oh well).
 
 The only optimization I did add was to reduce the "legal board states" down to purley the "unique board states". This reduced the state space down from 5,478 -> 765 boards.
+
+# CLI Set-up
+1. Clone this repo:
+```bash
+git clone [address] [destination]
+```
+
+2. Run main.py:
+```python
+python .\main.py
+```
+
+# GUI Set-up
+1. Clone this repo:
+```bash
+git clone [address] [destination]
+```
+
+2. Clone ui elements repo:
+```bash
+git clone [address] [destination]
+```
+
+3. Create a virtual environment
+```bash
+python -m venv .ven
+.\venv\Scripts\activate
+```
+
+4. Install ui elements into the virtual environment
+```bash
+python -m pip install -e .\pygame_ui
+```
+
+5. Install pygame into the virtual environment
+```bash
+pyhton -m pip install pygame
+```
+
+6. Run application.py
+```bash
+python .\application
+```

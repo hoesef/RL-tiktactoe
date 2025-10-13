@@ -1,5 +1,5 @@
 import pygame as pg
-from ui import Button
+from  pygame_ui.ui import Button
 
 class BaseScreen():
 
