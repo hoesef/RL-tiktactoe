@@ -11,6 +11,7 @@
 
 [ ] Create surface that grows to fit text
 
+[ ] Git submodules
 
 # Thoughts
 A collection of thoughts or improvements that I would like to come back to at some point, jut not right now
