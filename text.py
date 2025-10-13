@@ -42,6 +42,7 @@ class Text():
         self.italic = kwargs.get("italic", False)
         self.textColour = kwargs.get("textColour", (0, 0, 0))
         self.minSize = kwargs.get("minSize", 1)
+        self.transparentBackground = kwargs.get("transparentBackground", True)
 
         self.font = pg.font.SysFont(self.fontName, fontSize)
         self.font.set_bold(self.bold)
@@ -56,7 +57,7 @@ class Text():
         self.bold = not self.bold
         self.font.set_bold(self.bold)
 
-
+    #TODO: Thought 002
     def get_lines(self) -> None:
         """
         Returns the display text split into N lines depending on the text settings

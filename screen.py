@@ -48,9 +48,10 @@ class MenuScreen(BaseScreen):
         textSettings = {"fontName": "Arial", "fontSize": 30, "pos": (0, 0), 
                     "wrap": True, "textBox": (None, None), "padding": (5, 0, 5, 0),
                     "boarder": (0, 0, 0), "center": (True, True), "bgc": (255, 255, 255),
-                    "bold": False, "italic": False, "textColour": (0, 0, 0), "minSize": 1}
+                    "bold": False, "italic": False, "textColour": (100, 40, 30), "minSize": 1,
+                    "transparentBackground": True}
     
-        buttonSettings = {"colour": (255, 0, 0), "hoverColour": (0, 255, 0), 
+        buttonSettings = {"colour": (100, 100, 100), "hoverColour": (200, 200, 200), 
                         "bgc": (150, 150, 150), "boarder": (2, 2, 2, 2), 
                         "textSettings": textSettings}
 

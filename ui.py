@@ -17,16 +17,18 @@ class Button():
         
         self.currentColour = self.colour
 
-        print(f"{self.colour = }, {self.currentColour = }, {self.bgc = }")
+        self.text = text
 
         ## Text settings
-        if text:
+        if self.text:
             try:
                 self.textSettings = kwargs["textSettings"]
             except KeyError:
                 raise ValueError("No text settings supplied to the button.")
             self.textSettings["boarder"] = self.boarder
-            self.textSettings["bgc"] = self.currentColour
+            transparent = self.textSettings.get("transparentBackground", True)
+            if transparent:
+                self.textSettings["bgc"] = self.currentColour
             if self.textSettings["wrap"]:
                 self.textSettings["textBox"] = (width, height)
             self.text = Text(text, **self.textSettings)
@@ -42,11 +44,13 @@ class Button():
         if self.hovering(*pos) and (self.currentColour != self.hoverColour):
             self.currentColour = self.hoverColour
             self.doDisplayUpdate = True
-            self.text.bgc = self.currentColour
+            if self.text and self.text.transparentBackground:
+                self.text.bgc = self.currentColour
         elif not self.hovering(*pos) and (self.currentColour != self.colour):
             self.currentColour = self.colour
             self.doDisplayUpdate = True
-            self.text.bgc = self.currentColour
+            if self.text and self.text.transparentBackground:
+                self.text.bgc = self.currentColour
     
     def draw(self, surf):
         if not self.doDisplayUpdate:
@@ -54,7 +58,8 @@ class Button():
         
         self.buttonSurf.fill(self.bgc)
         self.buttonSurf.fill(self.currentColour, (self.boarder[0], self.boarder[1], self.width - (self.boarder[0] + self.boarder[2]), self.height - (self.boarder[1] + self.boarder[3])))#, pg.Rect(self.x + self.boarder, self.y + self.boarder, self.width - self.boarder, self.height - self.boarder))
-        self.text.render(self.buttonSurf)
+        if self.text:
+            self.text.render(self.buttonSurf)
         surf.blit(self.buttonSurf, (self.x, self.y))
         self.doDisplayUpdate = False
 
